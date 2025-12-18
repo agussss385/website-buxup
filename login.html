@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - BUXUP</title>
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --primary-blue: #34B7F1;
+            --primary-yellow: #FFD640;
+        }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg-dark);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-card {
+            background: var(--card-bg);
+            width: 90%;
+            max-width: 400px;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .logo-img { width: 100px; margin-bottom: 15px; }
+        .roblox-icon { width: 20px; vertical-align: middle; margin-right: 8px; }
+        h1 { font-size: 1.8rem; margin-bottom: 25px; display: flex; align-items: center; justify-content: center; }
+        h1 span { color: var(--primary-yellow); }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            background: #0f172a;
+            color: white;
+            box-sizing: border-box;
+        }
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            background: var(--primary-yellow);
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-login:hover { background: #eab308; }
+        footer { margin-top: 20px; font-size: 0.8rem; color: #64748b; }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <img src="Group 27.png" alt="BUXUP Logo" class="logo-img">
+        <h1>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Roblox_player_icon_black.svg" class="roblox-icon" style="filter: invert(1);" alt="Roblox">
+            BUX<span>UP</span>
+        </h1>
+        <form onsubmit="event.preventDefault(); window.location.href='index.html';">
+            <input type="text" placeholder="Username / ID Roblox" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit" class="btn-login">LOGIN</button>
+        </form>
+    </div>
+    <footer>© 2025 BUXUP - All Rights Reserved</footer>
+</body>
+</html>

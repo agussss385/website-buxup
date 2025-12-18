@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - BUXUP</title>
+    <style>
+        :root {
+            --bg-dark: #020617;
+            --card-bg: #1e293b;
+            --primary-blue: #34B7F1;
+            --primary-yellow: #FFD640;
+            --success: #22c55e;
+            --danger: #ef4444;
+        }
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            background: var(--bg-dark); 
+            color: white; 
+            margin: 0; 
+        }
+
+        /* Login Admin Overlay */
+        #adminLogin {
+            position: fixed; top:0; left:0; width:100%; height:100%;
+            background: var(--bg-dark); z-index: 9999;
+            display: flex; justify-content: center; align-items: center;
+        }
+
+        nav {
+            background: var(--card-bg);
+            padding: 15px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 2px solid var(--primary-yellow);
+        }
+
+        .container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px; margin-bottom: 30px;
+        }
+        .stat-card {
+            background: var(--card-bg); padding: 20px; border-radius: 15px;
+            border-left: 5px solid var(--primary-blue);
+        }
+        .stat-card h3 { margin: 0; font-size: 0.9rem; color: #94a3b8; }
+        .stat-card p { margin: 10px 0 0; font-size: 1.8rem; font-weight: bold; color: var(--primary-yellow); }
+
+        /* Order Table */
+        .order-section { background: var(--card-bg); border-radius: 15px; padding: 20px; overflow: hidden; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th { text-align: left; color: var(--primary-blue); padding: 15px; border-bottom: 2px solid #334155; }
+        td { padding: 15px; border-bottom: 1px solid #334155; font-size: 0.9rem; }
+
+        .btn { padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .btn-success { background: var(--success); color: white; }
+        .btn-danger { background: var(--danger); color: white; margin-left: 5px; }
+
+        footer { text-align: center; padding: 20px; color: #64748b; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+<div id="adminLogin">
+    <div style="text-align: center; background: var(--card-bg); padding: 40px; border-radius: 20px;">
+        <img src="Group 27.png" style="width: 80px; margin-bottom: 20px;">
+        <h2>ADMIN PANEL</h2>
+        <input type="password" id="adminPass" placeholder="Masukkan PIN Admin" 
+               style="padding:12px; border-radius:8px; border:none; text-align:center; font-size:1.1rem;">
+        <br><br>
+        <button class="btn btn-success" onclick="checkAdmin()" style="width:100%">MASUK</button>
+    </div>
+</div>
+
+<nav>
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <img src="Group 27.png" height="30">
+        <b>BUXUP <span style="color: var(--primary-yellow)">ADMIN</span></b>
+    </div>
+    <button class="btn btn-danger" onclick="location.reload()">KELUAR</button>
+</nav>
+
+<div class="container">
+    <div class="stats-grid">
+        <div class="stat-card">
+            <h3>TOTAL PENDAPATAN</h3>
+            <p id="totalCuan">Rp 1.200.000</p>
+        </div>
+        <div class="stat-card" style="border-color: var(--primary-yellow);">
+            <h3>PESANAN PENDING</h3>
+            <p>3</p>
+        </div>
+        <div class="stat-card" style="border-color: var(--success);">
+            <h3>PROSES SELESAI</h3>
+            <p>14</p>
+        </div>
+    </div>
+
+    <div class="order-section">
+        <h2>Daftar Pesanan Masuk</h2>
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Waktu</th>
+                        <th>ID Roblox</th>
+                        <th>Paket</th>
+                        <th>Bayar Ke</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="adminOrderTable">
+                    <tr>
+                        <td>12:30</td>
+                        <td>User_Example1</td>
+                        <td>1700 Robux</td>
+                        <td>QRIS</td>
+                        <td>
+                            <button class="btn btn-success" onclick="done(this)">Selesai</button>
+                            <button class="btn btn-danger" onclick="cancel(this)">Hapus</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>13:05</td>
+                        <td>Gamer88</td>
+                        <td>800 Robux</td>
+                        <td>BCA</td>
+                        <td>
+                            <button class="btn btn-success" onclick="done(this)">Selesai</button>
+                            <button class="btn btn-danger" onclick="cancel(this)">Hapus</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<footer>© 2025 BUXUP Admin System - Confidentiel</footer>
+
+<script>
+    // PIN ADMIN SEDERHANA
+    function checkAdmin() {
+        const pin = document.getElementById('adminPass').value;
+        if(pin === "1234") { // Ganti "1234" dengan PIN keinginan Anda
+            document.getElementById('adminLogin').style.display = 'none';
+        } else {
+            alert("PIN SALAH!");
+        }
+    }
+
+    function done(btn) {
+        const row = btn.parentNode.parentNode;
+        row.style.opacity = "0.3";
+        row.style.background = "#064e3b";
+        btn.disabled = true;
+        alert("Pesanan ditandai SELESAI. Silakan kirim Robux ke player!");
+    }
+
+    function cancel(btn) {
+        if(confirm("Hapus pesanan ini?")) {
+            btn.parentNode.parentNode.remove();
+        }
+    }
+</script>
+
+</body>
+</html>

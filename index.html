@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUXUP - Top Up Robux</title>
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --primary-blue: #34B7F1;
+            --primary-yellow: #FFD640;
+            --text-gray: #94a3b8;
+        }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg-dark); color: white; margin: 0; }
+        
+        nav {
+            background: var(--card-bg);
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--primary-yellow);
+            position: sticky; top: 0; z-index: 100;
+        }
+        .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: white; }
+        .nav-logo img { height: 40px; }
+        .roblox-mini { width: 18px; filter: invert(1); margin-right: 5px; }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr 1fr;
+            gap: 20px;
+            padding: 0 15px;
+        }
+        @media (max-width: 992px) { .container { grid-template-columns: 1fr; } }
+
+        .card { background: var(--card-bg); padding: 20px; border-radius: 15px; }
+        h2 { font-size: 1rem; color: var(--primary-yellow); margin-bottom: 15px; display: flex; align-items: center; }
+
+        input, select, textarea {
+            width: 100%; padding: 12px; margin-bottom: 10px;
+            border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; box-sizing: border-box;
+        }
+
+        .package-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .item {
+            border: 2px solid #334155; padding: 15px; border-radius: 10px; text-align: center; cursor: pointer; transition: 0.3s;
+        }
+        .item:hover, .item.active { border-color: var(--primary-blue); background: rgba(52, 183, 241, 0.1); }
+        .item b { display: block; color: var(--primary-blue); font-size: 1.1rem; }
+
+        .summary { background: #111827; padding: 15px; border-radius: 10px; margin-top: 15px; }
+        .total { border-top: 1px solid #334155; padding-top: 8px; color: var(--primary-yellow); font-weight: bold; display: flex; justify-content: space-between; }
+
+        .btn { width: 100%; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .btn-blue { background: var(--primary-blue); color: white; }
+        .btn-logout { background: transparent; border: 1px solid #ef4444; color: #ef4444; margin-top: 15px; }
+
+        .history-section { max-width: 1200px; margin: 30px auto; padding: 0 15px; }
+        table { width: 100%; border-collapse: collapse; background: var(--card-bg); border-radius: 15px; overflow: hidden; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #334155; }
+        th { color: var(--primary-blue); }
+
+        footer { text-align: center; padding: 30px; color: #64748b; font-size: 0.9rem; border-top: 1px solid #334155; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-logo">
+        <img src="Group 27.png" alt="Logo">
+        <b>BUX<span style="color:var(--primary-yellow)">UP</span></b>
+    </div>
+    <div style="font-size: 0.8rem; color: var(--text-gray);">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Roblox_player_icon_black.svg" class="roblox-mini" alt=""> 
+        ROBLOX TOP UP PARTNER
+    </div>
+</nav>
+
+<div class="container">
+    <div class="card">
+        <h2>1. MASUKKAN ID</h2>
+        <input type="text" id="robloxId" placeholder="ID Roblox Anda" oninput="updateSummary()">
+    </div>
+
+    <div class="card">
+        <h2>2. PILIH PAKET ROBUX</h2>
+        <div class="package-grid">
+            <div class="item" onclick="selectItem(this, 800, 150000)"><b>800 R$</b>Rp 150rb</div>
+            <div class="item" onclick="selectItem(this, 1700, 300000)"><b>1700 R$</b>Rp 300rb</div>
+            <div class="item" onclick="selectItem(this, 4500, 750000)"><b>4500 R$</b>Rp 750rb</div>
+            <div class="item" onclick="selectItem(this, 10000, 1500000)"><b>10000 R$</b>Rp 1.5jt</div>
+        </div>
+        <div class="summary">
+            <div id="resId">ID: -</div>
+            <div id="resPack">Paket: -</div>
+            <div class="total"><span>Total:</span> <span id="resPrice">Rp 0</span></div>
+        </div>
+        <button class="btn btn-blue" style="margin-top:15px;" onclick="checkout()">BAYAR SEKARANG</button>
+    </div>
+
+    <div class="card">
+        <h2>HUBUNGI KAMI</h2>
+        <textarea rows="3" placeholder="Pesan untuk admin..."></textarea>
+        <button class="btn btn-blue" onclick="alert('Pesan Terkirim!')">KIRIM PESAN</button>
+        <button class="btn btn-logout" onclick="window.location.href='login.html'">LOG OUT</button>
+    </div>
+</div>
+
+<div class="history-section">
+    <h2 style="color: var(--primary-yellow);">RIWAYAT PEMBELIAN 2025</h2>
+    <table>
+        <thead>
+            <tr><th>Tanggal</th><th>ID Roblox</th><th>Item</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>2025-01-10</td><td>Gamer_X</td><td>1700 Robux</td><td style="color:#22c55e">Berhasil</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<footer>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Roblox_player_icon_black.svg" style="width:15px; filter:grayscale(100%); opacity:0.5;" alt="">
+    <br>
+    Copyright © 2025 BUXUP - All Rights Reserved.
+</footer>
+
+<script>
+    let price = 0; let robux = 0;
+    function selectItem(el, r, p) {
+        document.querySelectorAll('.item').forEach(i => i.classList.remove('active'));
+        el.classList.add('active');
+        robux = r; price = p;
+        updateSummary();
+    }
+    function updateSummary() {
+        document.getElementById('resId').innerText = "ID: " + (document.getElementById('robloxId').value || "-");
+        document.getElementById('resPack').innerText = "Paket: " + (robux > 0 ? robux + " Robux" : "-");
+        document.getElementById('resPrice').innerText = 'Rp ' + price.toLocaleString('id-ID');
+    }
+    function checkout() {
+        const id = document.getElementById('robloxId').value;
+        if(!id || price === 0) return alert('Lengkapi data!');
+        window.open(`https://wa.me/085893088315?text=Order ${robux} Robux untuk ID: ${id}`);
+    }
+</script>
+</body>
+</html>

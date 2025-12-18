@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riwayat Pembelian - BUXUP</title>
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --primary-blue: #34B7F1;
+            --primary-yellow: #FFD640;
+            --text-white: #ffffff;
+            --text-gray: #94a3b8;
+            --success: #22c55e;
+            --pending: #f59e0b;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background: var(--card-bg);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--primary-yellow);
+        }
+
+        .logo { font-size: 1.5rem; font-weight: bold; text-decoration: none; color: white; }
+        .logo span { color: var(--primary-yellow); }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        h2 { color: var(--primary-yellow); margin-bottom: 20px; }
+
+        /* Style Tabel */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th {
+            text-align: left;
+            background: #0f172a;
+            color: var(--primary-blue);
+            padding: 15px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #334155;
+            font-size: 0.95rem;
+        }
+
+        tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* Status Badge */
+        .badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .badge-success { background: rgba(34, 197, 94, 0.2); color: var(--success); }
+        .badge-pending { background: rgba(245, 158, 11, 0.2); color: var(--pending); }
+
+        .btn-back {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .btn-back:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo">BUX<span>UP</span></a>
+    <div style="font-size: 0.9rem; color: var(--text-gray);">Riwayat Transaksi</div>
+</nav>
+
+<div class="container">
+    <div class="card">
+        <h2>Riwayat Pembelian Anda</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tanggal</th>
+                        <th>ID Roblox</th>
+                        <th>Paket</th>
+                        <th>Harga</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="historyBody">
+                    <tr>
+                        <td>18 Des 2023</td>
+                        <td>UserGamer123</td>
+                        <td>1700 Robux</td>
+                        <td>Rp 300.000</td>
+                        <td><span class="badge badge-success">Berhasil</span></td>
+                    </tr>
+                    <tr>
+                        <td>17 Des 2023</td>
+                        <td>UserGamer123</td>
+                        <td>800 Robux</td>
+                        <td>Rp 150.000</td>
+                        <td><span class="badge badge-success">Berhasil</span></td>
+                    </tr>
+                    <tr>
+                        <td>18 Des 2023</td>
+                        <td>UserGamer123</td>
+                        <td>10000 Robux</td>
+                        <td>Rp 1.500.000</td>
+                        <td><span class="badge badge-pending">Menunggu</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <a href="index.html" class="btn-back">← Kembali ke Halaman Top Up</a>
+    </div>
+</div>
+
+</body>
+</html>

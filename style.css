@@ -1,0 +1,198 @@
+/* --- Root Variables untuk Konsistensi Warna Logo --- */
+:root {
+    --bg-dark: #0f172a;           /* Latar belakang gelap utama */
+    --card-bg: #1e293b;           /* Latar belakang kartu/panel */
+    --primary-blue: #34B7F1;      /* Biru dari Logo BUXUP */
+    --primary-yellow: #FFD640;    /* Kuning dari Logo BUXUP */
+    --text-white: #ffffff;
+    --text-gray: #94a3b8;
+    --danger-red: #ef4444;
+    --transition: all 0.3s ease;
+}
+
+/* --- Global Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    line-height: 1.6;
+}
+
+/* --- Layout Grid Utama --- */
+.main-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* 3 Kolom seperti di gambar referensi */
+    gap: 20px;
+}
+
+/* Responsif untuk Tablet/HP */
+@media (max-width: 992px) {
+    .main-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Desain Kartu (Section) --- */
+.card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+h2 {
+    font-size: 1.2rem;
+    color: var(--primary-yellow);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-transform: uppercase;
+}
+
+/* --- Styling Input & Form --- */
+input, select, textarea {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    background: #0f172a;
+    border: 1.5px solid #334155;
+    border-radius: 10px;
+    color: white;
+    font-size: 14px;
+    transition: var(--transition);
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 8px rgba(52, 183, 241, 0.3);
+}
+
+/* --- Button Styling --- */
+.btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-yellow {
+    background: var(--primary-yellow);
+    color: #000;
+}
+
+.btn-yellow:hover {
+    background: #e6c139;
+    transform: translateY(-2px);
+}
+
+.btn-blue {
+    background: var(--primary-blue);
+    color: #fff;
+}
+
+.btn-blue:hover {
+    background: #29a3d9;
+    transform: translateY(-2px);
+}
+
+.btn-logout {
+    background: transparent;
+    border: 1px solid var(--danger-red);
+    color: var(--danger-red);
+    margin-top: 10px;
+}
+
+.btn-logout:hover {
+    background: var(--danger-red);
+    color: white;
+}
+
+/* --- Paket Robux Grid --- */
+.package-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.package-item {
+    background: #2d3748;
+    border: 2px solid transparent;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.package-item:hover {
+    border-color: var(--primary-blue);
+    background: rgba(52, 183, 241, 0.1);
+}
+
+.package-item.active {
+    border-color: var(--primary-yellow);
+    background: rgba(255, 214, 64, 0.1);
+}
+
+.package-item .robux-amount {
+    display: block;
+    font-weight: bold;
+    color: var(--primary-blue);
+}
+
+.package-item .price {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+}
+
+/* --- Rincian Pembelian Area --- */
+.summary-box {
+    background: rgba(0,0,0,0.2);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.total-price {
+    border-top: 1px solid #444;
+    padding-top: 10px;
+    margin-top: 10px;
+    font-weight: bold;
+    color: var(--primary-yellow);
+    font-size: 1.1rem;
+}
+
+/* --- Contact Us Section --- */
+.contact-info {
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    margin-bottom: 5px;
+}
