@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUXUP - Top Up Robux</title>
+    <title>BUXUP - Top Up Robux Terpercaya</title>
     <style>
         :root {
             --bg-dark: #0f172a;
@@ -11,9 +11,12 @@
             --primary-blue: #34B7F1;
             --primary-yellow: #FFD640;
             --text-gray: #94a3b8;
+            --success-green: #22c55e;
         }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg-dark); color: white; margin: 0; }
         
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg-dark); color: white; margin: 0; line-height: 1.6; }
+        
+        /* Navigation */
         nav {
             background: var(--card-bg);
             padding: 10px 5%;
@@ -25,56 +28,67 @@
         }
         .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: white; }
         .nav-logo img { height: 40px; }
-        .roblox-mini { width: 18px; filter: invert(1); margin-right: 5px; }
+        .roblox-mini { width: 18px; filter: invert(1); margin-right: 5px; vertical-align: middle; }
 
+        /* Layout */
         .container {
             max-width: 1200px;
             margin: 20px auto;
             display: grid;
-            grid-template-columns: 1fr 1.5fr 1fr;
+            grid-template-columns: 1fr 1.2fr 1fr;
             gap: 20px;
             padding: 0 15px;
         }
         @media (max-width: 992px) { .container { grid-template-columns: 1fr; } }
 
-        .card { background: var(--card-bg); padding: 20px; border-radius: 15px; }
-        h2 { font-size: 1rem; color: var(--primary-yellow); margin-bottom: 15px; display: flex; align-items: center; }
+        /* Cards */
+        .card { background: var(--card-bg); padding: 20px; border-radius: 15px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.3); }
+        h2 { font-size: 0.9rem; color: var(--primary-yellow); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
 
+        /* Inputs */
         input, select, textarea {
             width: 100%; padding: 12px; margin-bottom: 10px;
             border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; box-sizing: border-box;
+            outline: none; transition: 0.3s;
         }
+        input:focus, select:focus { border-color: var(--primary-blue); }
 
+        /* Grid Items */
         .package-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         .item {
             border: 2px solid #334155; padding: 15px; border-radius: 10px; text-align: center; cursor: pointer; transition: 0.3s;
         }
-        .item:hover, .item.active { border-color: var(--primary-blue); background: rgba(52, 183, 241, 0.1); }
+        .item:hover { border-color: var(--primary-blue); background: rgba(52, 183, 241, 0.05); }
+        .item.active { border-color: var(--primary-blue); background: rgba(52, 183, 241, 0.15); box-shadow: 0 0 10px rgba(52, 183, 241, 0.3); }
         .item b { display: block; color: var(--primary-blue); font-size: 1.1rem; }
 
-        .summary { background: #111827; padding: 15px; border-radius: 10px; margin-top: 15px; }
-        .total { border-top: 1px solid #334155; padding-top: 8px; color: var(--primary-yellow); font-weight: bold; display: flex; justify-content: space-between; }
+        /* Summary Area */
+        .summary { background: #111827; padding: 15px; border-radius: 10px; margin-top: 15px; border: 1px dashed #334155; }
+        .total { border-top: 1px solid #334155; margin-top: 10px; padding-top: 8px; color: var(--primary-yellow); font-weight: bold; display: flex; justify-content: space-between; font-size: 1.1rem; }
 
-        .btn { width: 100%; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        .btn-blue { background: var(--primary-blue); color: white; }
+        /* Buttons */
+        .btn { width: 100%; padding: 14px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 1rem; }
+        .btn-blue { background: var(--primary-blue); color: white; box-shadow: 0 4px 14px 0 rgba(52, 183, 241, 0.39); }
+        .btn-blue:hover { background: #29a3d8; transform: translateY(-2px); }
         .btn-logout { background: transparent; border: 1px solid #ef4444; color: #ef4444; margin-top: 15px; }
 
+        /* Table */
         .history-section { max-width: 1200px; margin: 30px auto; padding: 0 15px; }
         table { width: 100%; border-collapse: collapse; background: var(--card-bg); border-radius: 15px; overflow: hidden; }
         th, td { padding: 15px; text-align: left; border-bottom: 1px solid #334155; }
-        th { color: var(--primary-blue); }
+        th { background: #1e293b; color: var(--primary-blue); }
 
-        footer { text-align: center; padding: 30px; color: #64748b; font-size: 0.9rem; border-top: 1px solid #334155; margin-top: 40px; }
+        footer { text-align: center; padding: 40px; color: #64748b; font-size: 0.8rem; border-top: 1px solid #334155; margin-top: 40px; }
     </style>
 </head>
 <body>
 
 <nav>
     <div class="nav-logo">
-        <img src="Group 27.png" alt="Logo">
+        <img src="Group 27.png" alt="Logo" onerror="this.src='https://via.placeholder.com/40x40?text=B'">
         <b>BUX<span style="color:var(--primary-yellow)">UP</span></b>
     </div>
-    <div style="font-size: 0.8rem; color: var(--text-gray);">
+    <div style="font-size: 0.75rem; color: var(--text-gray); text-align: right;">
         <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Roblox_player_icon_black.svg" class="roblox-mini" alt=""> 
         ROBLOX TOP UP PARTNER
     </div>
@@ -83,69 +97,118 @@
 <div class="container">
     <div class="card">
         <h2>1. MASUKKAN ID</h2>
-        <input type="text" id="robloxId" placeholder="ID Roblox Anda" oninput="updateSummary()">
+        <input type="text" id="robloxId" placeholder="Contoh: Gamer_Pro123" oninput="updateSummary()">
+        <small style="color: var(--text-gray); font-size: 0.7rem;">*Pastikan ID sudah benar, kesalahan bukan tanggung jawab kami.</small>
     </div>
 
     <div class="card">
         <h2>2. PILIH PAKET ROBUX</h2>
         <div class="package-grid">
-            <div class="item" onclick="selectItem(this, 800, 150000)"><b>800 R$</b>Rp 150rb</div>
-            <div class="item" onclick="selectItem(this, 1700, 300000)"><b>1700 R$</b>Rp 300rb</div>
-            <div class="item" onclick="selectItem(this, 4500, 750000)"><b>4500 R$</b>Rp 750rb</div>
-            <div class="item" onclick="selectItem(this, 10000, 1500000)"><b>10000 R$</b>Rp 1.5jt</div>
+            <div class="item" onclick="selectItem(this, 800, 150000)"><b>800 R$</b>Rp 150.000</div>
+            <div class="item" onclick="selectItem(this, 1700, 300000)"><b>1700 R$</b>Rp 300.000</div>
+            <div class="item" onclick="selectItem(this, 4500, 750000)"><b>4500 R$</b>Rp 750.000</div>
+            <div class="item" onclick="selectItem(this, 10000, 1500000)"><b>10000 R$</b>Rp 1.500.000</div>
         </div>
+
+        <h2 style="margin-top: 25px;">3. METODE PEMBAYARAN</h2>
+        <select id="paymentMethod" onchange="updateSummary()">
+            <option value="">-- Pilih Pembayaran --</option>
+            <option value="QRIS">QRIS (OVO, Dana, LinkAja, ShopeePay)</option>
+            <option value="BCA">Bank BCA (Manual Check)</option>
+            <option value="DANA">DANA - 0858xxxxxxx</option>
+        </select>
+
         <div class="summary">
             <div id="resId">ID: -</div>
             <div id="resPack">Paket: -</div>
+            <div id="resPay">Bayar via: -</div>
             <div class="total"><span>Total:</span> <span id="resPrice">Rp 0</span></div>
         </div>
-        <button class="btn btn-blue" style="margin-top:15px;" onclick="checkout()">BAYAR SEKARANG</button>
+        <button class="btn btn-blue" style="margin-top:20px;" onclick="checkout()">BAYAR SEKARANG</button>
     </div>
 
     <div class="card">
         <h2>HUBUNGI KAMI</h2>
-        <textarea rows="3" placeholder="Pesan untuk admin..."></textarea>
-        <button class="btn btn-blue" onclick="alert('Pesan Terkirim!')">KIRIM PESAN</button>
-        <button class="btn btn-logout" onclick="window.location.href='login.html'">LOG OUT</button>
+        <p style="font-size: 0.8rem; color: var(--text-gray);">Ada kendala? Kirim pesan ke admin:</p>
+        <textarea id="adminMsg" rows="3" placeholder="Tulis kendala Anda di sini..."></textarea>
+        <button class="btn btn-blue" onclick="sendAdmin()">KIRIM PESAN</button>
+        <button class="btn btn-logout" onclick="alert('Berhasil Logout!')">LOG OUT</button>
     </div>
 </div>
 
 <div class="history-section">
-    <h2 style="color: var(--primary-yellow);">RIWAYAT PEMBELIAN 2025</h2>
+    <h2 style="color: var(--primary-yellow);">RIWAYAT PEMBELIAN TERBARU</h2>
     <table>
         <thead>
             <tr><th>Tanggal</th><th>ID Roblox</th><th>Item</th><th>Status</th></tr>
         </thead>
         <tbody>
-            <tr><td>2025-01-10</td><td>Gamer_X</td><td>1700 Robux</td><td style="color:#22c55e">Berhasil</td></tr>
+            <tr><td>2025-12-18</td><td>Gamer_X</td><td>1700 Robux</td><td style="color:var(--success-green)">✓ Berhasil</td></tr>
+            <tr><td>2025-12-17</td><td>Pro_Player</td><td>800 Robux</td><td style="color:var(--success-green)">✓ Berhasil</td></tr>
         </tbody>
     </table>
 </div>
 
 <footer>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Roblox_player_icon_black.svg" style="width:15px; filter:grayscale(100%); opacity:0.5;" alt="">
-    <br>
-    Copyright © 2025 BUXUP - All Rights Reserved.
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Roblox_player_icon_black.svg" style="width:15px; filter:grayscale(100%); opacity:0.3;" alt="">
+    <br><br>
+    Copyright © 2025 <b>BUXUP</b> - All Rights Reserved.
 </footer>
 
 <script>
-    let price = 0; let robux = 0;
+    let selectedPrice = 0; 
+    let selectedRobux = 0;
+
     function selectItem(el, r, p) {
+        // Hapus class active dari semua item
         document.querySelectorAll('.item').forEach(i => i.classList.remove('active'));
+        // Tambah class active ke yang dipilih
         el.classList.add('active');
-        robux = r; price = p;
+        
+        selectedRobux = r; 
+        selectedPrice = p;
         updateSummary();
     }
+
     function updateSummary() {
-        document.getElementById('resId').innerText = "ID: " + (document.getElementById('robloxId').value || "-");
-        document.getElementById('resPack').innerText = "Paket: " + (robux > 0 ? robux + " Robux" : "-");
-        document.getElementById('resPrice').innerText = 'Rp ' + price.toLocaleString('id-ID');
+        const id = document.getElementById('robloxId').value || "-";
+        const payment = document.getElementById('paymentMethod').value || "-";
+        
+        document.getElementById('resId').innerText = "ID: " + id;
+        document.getElementById('resPack').innerText = "Paket: " + (selectedRobux > 0 ? selectedRobux + " Robux" : "-");
+        document.getElementById('resPay').innerText = "Bayar via: " + payment;
+        document.getElementById('resPrice').innerText = 'Rp ' + selectedPrice.toLocaleString('id-ID');
     }
+
     function checkout() {
         const id = document.getElementById('robloxId').value;
-        if(!id || price === 0) return alert('Lengkapi data!');
-        window.open(`https://wa.me/085893088315?text=Order ${robux} Robux untuk ID: ${id}`);
+        const payment = document.getElementById('paymentMethod').value;
+        
+        if(!id || selectedPrice === 0 || !payment) {
+            alert('❌ Mohon lengkapi ID, Paket Robux, dan Metode Pembayaran!');
+            return;
+        }
+
+        // Format pesan WhatsApp
+        const waNumber = "6285893088315"; // Gunakan format 62 di depan
+        const text = `*PESANAN BARU - BUXUP*%0A` +
+                     `----------------------------%0A` +
+                     `*ID Roblox* : ${id}%0A` +
+                     `*Paket* : ${selectedRobux} Robux%0A` +
+                     `*Total* : Rp ${selectedPrice.toLocaleString('id-ID')}%0A` +
+                     `*Metode* : ${payment}%0A` +
+                     `----------------------------%0A` +
+                     `Mohon instruksi selanjutnya untuk pembayaran.`;
+
+        window.open(`https://wa.me/${waNumber}?text=${text}`);
+    }
+
+    function sendAdmin() {
+        const msg = document.getElementById('adminMsg').value;
+        if(!msg) return alert('Pesan tidak boleh kosong!');
+        window.open(`https://wa.me/6285893088315?text=Halo Admin, saya ingin bertanya: ${msg}`);
     }
 </script>
+
 </body>
 </html>
